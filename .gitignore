@@ -1,0 +1,23 @@
+# Virtual environment
+.venv/
+
+# Python environment/version
+.python-version
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment variables
+.env
+
+# FAISS vectorstore (contains large binary files)
+faiss_index/
+vectorstore/
+
+# Lock files
+uv.lock
+
+# Data files
+data/
