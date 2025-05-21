@@ -25,7 +25,7 @@ def load_llm(huggingface_repo_id):
 
 CUSTOM_PROMPT_TEMPLATE = """<s>[INST] 
 You are a helpful AI assistant. Based on the following context and chat history, answer the question in one short sentence, not more than one sentence. 
-If you don't know the answer, say "I don't know." . If he greets you, say "Hello, how can I help you?"
+If you don't know the answer, say "I don't know." . If he greets you, say "Hello, how can I help you?". Retain knowledge of the chat history and context to provide a more accurate answer.
 
 Context: {context}
 

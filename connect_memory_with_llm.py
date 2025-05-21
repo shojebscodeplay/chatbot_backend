@@ -7,7 +7,10 @@ from langchain_community.vectorstores import FAISS
 
 
 # Step 1: Setup LLM (Mistral with HuggingFace)
-HF_TOKEN=os.environ.get("HF_TOKEN")
+HF_TOKEN = os.environ.get("HF_TOKEN")
+
+if HF_TOKEN is None:
+    raise EnvironmentError("❌ HF_TOKEN is missing. Please set it as an environment variable.")
 HUGGINGFACE_REPO_ID="mistralai/Mistral-7B-Instruct-v0.3"
 
 def load_llm(huggingface_repo_id):
@@ -37,6 +40,7 @@ def set_custom_prompt(custom_prompt_template):
 
 # Load Database
 DB_FAISS_PATH="vectorstore/db_faiss"
+
 embedding_model=HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 db=FAISS.load_local(DB_FAISS_PATH, embedding_model, allow_dangerous_deserialization=True)
 
