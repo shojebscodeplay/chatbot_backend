@@ -49,7 +49,9 @@ qa_chain = ConversationalRetrievalChain.from_llm(
 
 class Query(BaseModel):
     question: str
-
+@app.get("/")
+def read_root():
+    return {"message": "Backend is running!"}
 @app.post("/chat")
 async def chat_endpoint(query: Query):
     response = qa_chain.invoke({"question": query.question, "chat_history": memory.chat_memory.messages})
